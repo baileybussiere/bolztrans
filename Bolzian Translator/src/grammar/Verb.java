@@ -18,7 +18,15 @@ public class Verb extends Word
 		super(inf);
 		this.setInfs();
 	}
-	
+
+	public Verb copy()
+	{
+		Verb v = new Verb(this.base).setInfs(this.baseFut, this.basePast);
+		if(nullOMarking)
+			v.setNullObjMarking();
+		return v;
+	}
+
 	public Verb addTranslations(String s)
 	{
 		super.addTranslations(s);

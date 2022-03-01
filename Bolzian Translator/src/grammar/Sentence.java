@@ -23,9 +23,13 @@ public class Sentence
 
 	public String print()
 	{
-		if (this.type == 0 || this.type == 1)
+		if (this.type == 0)
 		{
 			return this.phrase.print();
+		}
+		else if(this.type == 1)
+		{
+			return this.phrase.print() + " aa?";
 		}
 		else
 		{

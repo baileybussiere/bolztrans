@@ -11,7 +11,12 @@ public class Word
 	{
 		this.base = b;
 	}
-	
+
+	public Word copy()
+	{
+		return new Word(this.base);
+	}
+
 	public String print()
 	{
 		return this.base;

@@ -79,7 +79,7 @@ public class Dictionary
 	public static Word bush = new Noun("'idru").addTranslations(new String[] {"bush", "bushes"});
 	public static Word god = new Noun("skali").setPlural("sagil").addTranslations(new String[] {"god", "gods"});
 	public static Word i = new Noun("bagbu").setPlural("bakub").setPerson(0).addTranslations(new String[] {"I", "me", "myself"});
-	public static Word you = new Noun("hu!u").setPlural("hu!a").setPerson(1).addTranslations(new String[] {"you", "thou", "thee", "yourself", "thyself"});
+	public static Word you = new Noun("huQu").setPlural("huQa").setPerson(1).addTranslations(new String[] {"you", "thou", "thee", "yourself", "thyself"});
 	public static Word secret = new Noun("xubli").addTranslations(new String[] {"secret", "secrets"});
 	public static Word time = new Noun("twara").addTranslations("time");
 	public static Word human = new Noun("bru").setPlural("buk").addTranslations(new String[] {"human", "humans", "people"});
@@ -383,7 +383,7 @@ public class Dictionary
 				{
 					if (string.equals(((Noun) entries.get(i)).english.get(j)))
 					{
-						return (Noun) entries.get(i);
+						return ((Noun) entries.get(i)).copy();
 					}
 				}
 			}
@@ -393,7 +393,7 @@ public class Dictionary
 				{
 					if (string.equals(((Verb) entries.get(i)).english.get(j)))
 					{
-						return (Verb) entries.get(i);
+						return ((Verb) entries.get(i)).copy();
 					}
 				}
 			}
@@ -403,7 +403,7 @@ public class Dictionary
 				{
 					if (string.equals(((Adverb) entries.get(i)).english.get(j)))
 					{
-						return (Adverb) entries.get(i);
+						return ((Adverb) entries.get(i)).copy();
 					}
 				}
 			}
@@ -413,7 +413,7 @@ public class Dictionary
 				{
 					if (string.equals(((Preposition) entries.get(i)).english.get(j)))
 					{
-						return (Preposition) entries.get(i);
+						return ((Preposition) entries.get(i)).copy();
 					}
 				}
 			}
@@ -423,7 +423,7 @@ public class Dictionary
 				{
 					if (string.equals(((Conjunction) entries.get(i)).english.get(j)))
 					{
-						return (Conjunction) entries.get(i);
+						return ((Conjunction) entries.get(i)).copy();
 					}
 				}
 			}
@@ -433,7 +433,7 @@ public class Dictionary
 				{
 					if (string.equals(((Article) entries.get(i)).english.get(j)))
 					{
-						return (Article) entries.get(i);
+						return ((Article) entries.get(i)).copy();
 					}
 				}
 			}

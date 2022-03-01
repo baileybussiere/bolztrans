@@ -9,4 +9,8 @@ public class Adverb extends Word
 	{
 		super(s);
 	}
+	public Adverb copy()
+	{
+		return new Adverb(this.base);
+	}
 }

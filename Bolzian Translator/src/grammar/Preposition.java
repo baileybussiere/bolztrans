@@ -13,7 +13,12 @@ public class Preposition extends Word
 		super(base);
 		this.contractedForm = this.base;
 	}
-	
+
+	public Preposition copy()
+        {
+                return new Preposition(this.base).setContractedForm(this.base);
+        }
+
 	public Preposition setContractedForm(String s)
 	{
 		this.contractedForm = s;

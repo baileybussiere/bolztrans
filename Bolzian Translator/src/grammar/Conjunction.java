@@ -6,4 +6,9 @@ public class Conjunction extends Word
 	{
 		super(conj);
 	}
+
+	public Conjunction copy()
+        {
+                return new Conjunction(this.base);
+        }
 }

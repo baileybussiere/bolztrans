@@ -18,39 +18,57 @@ public class Main
 {
 	Scanner inputScanner = new Scanner(System.in);
 	Dictionary dict = new Dictionary();
-	
+	static boolean debug = false;
+
 	// W = Write, T = Translate, S = new Sentence, F = new Phrase, N = new Noun, V = new Verb, A = new Adverb, C = new Conjunction, P = new Preposition, L = new list (Object[]), + = add Modifier, H = hidden,
 	char[] keywords = {'W', 'T', 'S', 'F', 'N', 'V', 'A', 'C', 'P', 'L', '+', 'H', 'J'};
-	
+
 	public static void main(String[] args)
 	{
+		if(args.length == 1)
+		{
+			if(args[0] == "-d")
+			{
+				debug = true;
+			}
+		}
 		new Main();
 	}
 
 	public Main()
 	{
-		String[] str = clean(inputScanner.nextLine().split(" "));
-		//for (int i = 0; i < str.length; i++)
-		//	System.out.print(str[i] + ":");
-		//System.out.println("\n");
-		Object s = parse(str);
-		if (s instanceof String)
-			System.out.println("\n" + (String) s);
-		else if (s instanceof Noun)
-			System.out.println("\n" + ((Noun) s).print());
+		boolean exit = false;
+		while(!exit)
+		{
+			System.out.print(">");
+			String[] str = inputScanner.nextLine().split(" ");
+			if(str[0].equals("exit"))
+			{
+				exit = true;
+			}
+			else
+			{
+				str = clean(str);
+				Object s = parse(str);
+				if (s instanceof String)
+					System.out.println("\n" + (String) s);
+				else if (s instanceof Noun)
+					System.out.println("\n" + ((Noun) s).print());
+			}
+		}
 	}
 
 	private String[] clean(String[] inp)
 	{
-		System.out.print("cleaning");
+		if (debug) System.out.println("cleaning");
 		ArrayList<String> output = new ArrayList<String>();
 		for (int i = 0; i < inp.length; i++)
 		{
-			System.out.print(".");
+			if(debug) System.out.print(".");
 			int q = 0;
 			for (int j = 0; j < inp[i].length(); j++)
 			{
-				System.out.print(".");
+				if(debug) System.out.print(".");
 				if (inp[i].charAt(j) == '{')
 				{
 					if (inp[i].length() == j + 1)
@@ -106,13 +124,13 @@ public class Main
 			outputArray[g] = output.get(i);
 			g++;
 		}
-		System.out.print("\n");
+		if(debug) System.out.print("\n");
 		return outputArray;
 	}
 
 	private Object parse(String[] input)
 	{
-		System.out.print(".");
+		if(debug) System.out.print(".");
 		int ins = 0, outs = 0;
 		char keyword = ' ';
 		ArrayList<Object> args = new ArrayList<Object>();
@@ -206,32 +224,32 @@ public class Main
 		
 		for (int i = 0; i < args.size(); i++)
 		{
-			System.out.print(args.get(i).getClass() + ": ");
+			if(debug) System.out.print(args.get(i).getClass() + ": ");
 			if (args.get(i) instanceof Word)
 			{
 				if (((Word) args.get(i)).english.size() > 0)
-					System.out.println(((Word) args.get(i)).english.get(0));
+					if(debug) System.out.println(((Word) args.get(i)).english.get(0));
 				else
-					System.out.println(args.get(i));
+					if(debug) System.out.println(args.get(i));
 			}
 			else
-				System.out.println(args.get(i));
+				if(debug) System.out.println(args.get(i));
 		}
-		System.out.println("--");
+		if(debug) System.out.println("--");
 		for (int i = 0; i < mods.size(); i++)
 		{
-			System.out.print(mods.get(i).getClass() + ": ");
+			if(debug) System.out.print(mods.get(i).getClass() + ": ");
 			if (mods.get(i) instanceof Word)
 			{
 				if (((Word) mods.get(i)).english.size() > 0)
-					System.out.println(((Word) mods.get(i)).english.get(0));
+					if(debug) System.out.println(((Word) mods.get(i)).english.get(0));
 				else
-					System.out.println(mods.get(i));
+					if(debug) System.out.println(mods.get(i));
 			}
 			else
-				System.out.println(mods.get(i));
+				if(debug) System.out.println(mods.get(i));
 		}
-		System.out.println("exit");
+		if(debug) System.out.println("exit");
 		
 		
 		if (args.size() == 0)
@@ -609,11 +627,11 @@ public class Main
 							{
 								if ((Integer) args.get(2) < 3)
 								{
-									n1 = ((Noun) args.get(1)).inflect((Integer) args.get(2)).addModifier((Article) args.get(0));
+									n1 = (((Noun) args.get(1)).inflect((Integer) args.get(2))).addModifier((Article) args.get(0));
 								}
 							}
 							else
-								n1 = ((Noun) args.get(1)).inflect(0).addModifier((Article) args.get(0));
+								n1 = (((Noun) args.get(1)).inflect(0)).addModifier((Article) args.get(0));
 							if (fHidden)
 								n1.hide();
 						}
@@ -625,7 +643,7 @@ public class Main
 						else if (fHidden)
 							n1 = ((Noun) args.get(1)).inflect(0).hide();
 						else
-							n1 = ((Noun) args.get(1)).inflect(0).addModifier((Article) args.get(0));
+							n1 = (((Noun) args.get(1)).inflect(0)).addModifier((Article) args.get(0));
 					}
 				}
 				if (mods.size() == 0)

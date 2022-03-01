@@ -11,7 +11,12 @@ public class Article extends Word
 		this.baseDual = this.base + "n";
 		this.basePlural = this.base + "d";
 	}
-	
+
+	public Article copy()
+        {
+                return new Article(this.base);
+        }
+
 	public String print(int num)
 	{
 		if (num == 0)

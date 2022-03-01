@@ -10,20 +10,25 @@ public class Noun extends Word
 	public Phrase modifierPhrase;
 	public ArrayList<Preposition> modifierPreps = new ArrayList<Preposition>();
 	public Article article;
-	
+
 	public String plural;
 	public int num = 0;
 	public int person = 2;
 
 	public boolean hidden = false;
-	
+
 	public Noun(String n)
 	{
 		super(n);
 		this.base = n;
 		this.setPlural();
 	}
-	
+
+	public Noun copy()
+	{
+		return (new Noun(this.base)).setPlural(this.plural).setPerson(this.person);
+	}
+
 	public Noun addModifier(Article article)
 	{
 		this.article = article;
@@ -76,13 +81,8 @@ public class Noun extends Word
 
 	public Noun inflect(int i)
 	{
-		Noun noun = new Noun(this.base).setPlural(this.plural).setPerson(this.person);
-		noun.num = i;
-		noun.modifierNouns = this.modifierNouns;
-		noun.article = this.article;
-		noun.modifierPhrase = this.modifierPhrase;
-		noun.modifierPreps = this.modifierPreps;
-		return noun;
+		this.num = i;
+		return this;
 	}
 
 	public Noun addModifier(Noun noun)
