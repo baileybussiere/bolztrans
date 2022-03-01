@@ -79,7 +79,7 @@ bambu Qarda la-ga|a huQu aa?
 
 'Do you like my dog?'
 
-#Pronunciation
+# Pronunciation
 
 ' is a glottal stop
 
