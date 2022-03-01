@@ -80,9 +80,23 @@ bambu Qarda la-ga|a huQu aa?
 'Do you like my dog?'
 
 #Pronunciation
+
 ' is a glottal stop
+
 | is a lateral click
+
 Q is a bilabial click
+
 ! is a retroflex click
+
 x is a voiceless postalveolar fricative
+
 h is a voiceless velar fricative
+
+All else is roughly equivalent to IPA.
+
+There are three vowels, with distinctions on length;
+'a' can become a little centralized, especially when
+short and not before 'u' or 'i'.
+
+'g' can tend towards postvelar.
